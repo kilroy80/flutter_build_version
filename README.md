@@ -22,13 +22,13 @@ This follows a pattern where the user declares an abstract class using an annota
 dependencies:
   flutter_build_version:
     git:
-      url: https://github.com/kilroy80/flutter_build_version_package
+      url: https://github.com/kilroy80/flutter_build_version
       path: "flutter_build_version"
 
 dev_dependencies:
   flutter_build_version_generator:
     git:
-      url: https://github.com/kilroy80/flutter_build_version_package
+      url: https://github.com/kilroy80/flutter_build_version
       path: "flutter_build_version_generator"
 ```
 

@@ -11,7 +11,7 @@ dependencies:
   analyzer: ">=8.0.0 <10.0.0"
   flutter_build_version:
     git:
-      url: https://github.com/kilroy80/flutter_build_version_package
+      url: https://github.com/kilroy80/flutter_build_version
       path: "flutter_build_version"
 
 dev_dependencies:
