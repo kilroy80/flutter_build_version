@@ -1,6 +1,7 @@
 name: flutter_build_version_generator
-description: Build_runner generator for Flutter version
+description: Build_runner generator for flutter_build_version
 version: 0.0.1
+homepage: https://github.com/kilroy80/flutter_build_version
 
 environment:
   sdk: ">=2.17.0 <5.0.0"
