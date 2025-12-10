@@ -4,7 +4,7 @@ import 'package:meta/meta.dart';
 ///
 /// ```dart
 /// import 'package:flutter_build_version/flutter_build_version.dart';
-/// 
+///
 /// part 'app_version.gb.dart';
 ///
 /// @GenerateBuildVersion()
