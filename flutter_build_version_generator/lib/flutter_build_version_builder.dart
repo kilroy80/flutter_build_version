@@ -39,13 +39,7 @@ class FlutterBuildVersionGenerator
       );
     }
 
-    final result = await Process.run('flutter', ['--version', '--machine']);
-
-    if (result.exitCode != 0) {
-      throw Exception('Error running flutter --version: ${result.stderr}');
-    }
-
-    final Map<String, dynamic> versionJson = json.decode(result.stdout);
+    var versionJson = await ProcessExecute().run();
 
     final flutterVersion = versionJson['frameworkVersion'] ?? 'unknown';
     final flutterChannel = versionJson['channel'] ?? 'unknown';
@@ -77,3 +71,28 @@ Builder flutterBuildVersionBuilder(BuilderOptions options) =>
       FlutterBuildVersionGenerator(),
       generatedExtension: '.gb.dart',
     );
+
+
+/// Lazy singleton class
+class ProcessExecute {
+  static final ProcessExecute _instance = ProcessExecute._();
+  factory ProcessExecute() => _instance;
+
+  ProcessExecute._();
+
+  Map<String, dynamic> _versionJson = <String, dynamic>{};
+
+  Future<Map<String, dynamic>> run() async {
+    if (_versionJson.isEmpty) {
+      final result = await Process.run('flutter', ['--version', '--machine']);
+
+      if (result.exitCode != 0) {
+        throw Exception('Error running flutter --version: ${result.stderr}');
+      }
+
+      _versionJson = json.decode(result.stdout);
+      return _versionJson;
+    }
+    return _versionJson;
+  }
+}

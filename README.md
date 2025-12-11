@@ -18,7 +18,9 @@ This follows a pattern where the user declares an abstract class using an annota
 
 ### Install the package
 
-```dart
+pubspec.yaml
+
+```yaml
 dependencies:
   flutter_build_version:
     git:
@@ -59,7 +61,7 @@ class AppVersion extends _AppVersion {
 Use it like this:
 
 ```dart
-debugPrint(AppVersion.flutter);
+debugPrint(AppVersion.flutterVersion);
 ```
 
 ---
