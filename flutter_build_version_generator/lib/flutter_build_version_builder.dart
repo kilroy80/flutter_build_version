@@ -84,7 +84,11 @@ class ProcessExecute {
 
   Future<Map<String, dynamic>> run() async {
     if (_versionJson.isEmpty) {
-      final result = await Process.run('flutter', ['--version', '--machine']);
+      final result = await Process.run(
+        'flutter',
+        ['--version', '--machine'],
+        runInShell: true,
+      );
 
       if (result.exitCode != 0) {
         throw Exception('Error running flutter --version: ${result.stderr}');
