@@ -84,19 +84,20 @@ class ProcessExecute {
 
   Future<Map<String, dynamic>> run() async {
     if (_versionJson.isEmpty) {
-      ProcessResult result;
-      if (Platform.isWindows) {
-        result = await Process.run(
-          'cmd',
-          ['/c', 'flutter', '--version', '--machine'],
-        );
-      } else {
-        result = await Process.run(
-          'flutter',
-          ['--version', '--machine'],
-          runInShell: true,
-        );
-      }
+      /// Another way is to use cmd /c flutter (delegating to cmd)
+      ///
+      /// ```dart
+      /// final result = await Process.run(
+      ///   'cmd',
+      ///   ['/c', 'flutter', '--version', '--machine'],
+      /// );
+      ///
+      var flutterCommand = Platform.isWindows ? 'flutter.bat' : 'flutter';
+      final result = await Process.run(
+        flutterCommand,
+        ['--version', '--machine'],
+        runInShell: true,
+      );
 
       if (result.exitCode != 0) {
         throw Exception('Error running flutter --version: ${result.stderr}');
