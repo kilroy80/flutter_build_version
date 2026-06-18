@@ -9,8 +9,9 @@ environment:
 dependencies:
   build: ">=3.0.2 <5.0.0"
   source_gen: ">=3.1.0 <5.0.0"
-  analyzer: ">=8.0.0 <10.0.0"
+  analyzer: ">=8.0.0 <14.0.0"
   flutter_build_version:
+#    path: "../flutter_build_version"
     git:
       url: https://github.com/kilroy80/flutter_build_version
       path: "flutter_build_version"
